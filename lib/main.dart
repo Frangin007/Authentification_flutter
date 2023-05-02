@@ -1,5 +1,6 @@
 import 'package:authentification/screens/guest/Auth.dart';
 import 'package:authentification/screens/guest/Therms.dart';
+import 'package:authentification/screens/guest/password.dart';
 import 'package:flutter/material.dart';
 import '';
 void main() => runApp(const MyApp());

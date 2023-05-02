@@ -8,7 +8,11 @@ class AuthScreen extends StatefulWidget {
 }
 
 class _AuthScreenState extends State<AuthScreen> {
-
+ 
+  final _formkey = GlobalKey<FormState>();
+  final RegExp emailRegex = RegExp(r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b');
+  String _email = "";
+  
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -46,23 +50,35 @@ class _AuthScreenState extends State<AuthScreen> {
                 height: 50.0,
               ),
               
-              Form(child: Column(
+              Form(
+                key: _formkey,
+                child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                 Text('Entrez votre email'),
                 SizedBox(
                   height: 10.0,
                 ),
-                TextFormField(decoration: InputDecoration(
+                TextFormField(
+                  
+                  onChanged: (value) => setState(() => _email = value),
+                  validator: (value) => _email.isEmpty || !emailRegex.hasMatch(_email) 
+                  ? 'Please enter correct email'
+                  : null,
+                  decoration: InputDecoration(
                   hintText: 'Ex : john.doe@domain.tld',
+                  prefixIcon: Icon(Icons.email),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(0.0),
                     borderSide: BorderSide  (color: Colors.grey,),
+                    
                     ),
                     focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(0.0),
                     borderSide: BorderSide  (color: Colors.grey,),
+                    
                     ),
+                    
                 ),
                 ),
                 SizedBox(
@@ -70,7 +86,14 @@ class _AuthScreenState extends State<AuthScreen> {
                 ),
                 ElevatedButton(
                 
-                onPressed :(){},
+                onPressed :!emailRegex.hasMatch (_email) 
+                  ? null
+                  :() {
+                  if (_formkey.currentState != null){
+                     _formkey.currentState!.validate();
+                    print(_email);
+                  }
+                },
                 style: ElevatedButton.styleFrom(
                   primary: Colors.blue, // Couleur de fond du bouton
                   onPrimary: Colors.white, // Couleur du texte du bouton
