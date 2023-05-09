@@ -36,7 +36,7 @@ class _TermScreenState extends State<TermScreen> {
           onPressed:(){}, 
            ),
           titleSpacing: 0.0,
-          elevation: 0,
+          elevation: 1,
           backgroundColor:Theme.of(context).scaffoldBackgroundColor,
           title: Text('Terms and Conditions',
           style: TextStyle(color: Colors.black),
