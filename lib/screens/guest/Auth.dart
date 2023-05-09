@@ -65,9 +65,10 @@ class _AuthScreenState extends State<AuthScreen> {
                   validator: (value) => _email.isEmpty || !emailRegex.hasMatch(_email) 
                   ? 'Please enter correct email'
                   : null,
+                  
                   decoration: InputDecoration(
                   hintText: 'Ex : john.doe@domain.tld',
-                  prefixIcon: Icon(Icons.email),
+                  prefixIcon: Icon(Icons.email, color: Colors.grey,),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(0.0),
                     borderSide: BorderSide  (color: Colors.grey,),
