@@ -2,7 +2,7 @@ import 'package:authentification/screens/guest/Auth.dart';
 import 'package:authentification/screens/guest/Therms.dart';
 import 'package:authentification/screens/guest/password.dart';
 import 'package:flutter/material.dart';
-import '';
+
 void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       
-      home: PasswordScreen(),
+      home: AuthScreen(),
     );
   }
 }
